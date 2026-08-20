@@ -19,7 +19,7 @@ A job queue allows the API to create a job and return a response quickly, while 
 
 ## Basic Flow
 
-```text
+// Day-1 flow
 Client
    ↓
 Express API
@@ -33,11 +33,11 @@ Redis Queue
 Worker
    ↓
 Process Job
-![diagram flow](image.png)
 
 
-//Now flow
-            
+//Day-2 flow
+
+ on Day-2 explored BullMQ library allow you to handle jobs in redis queue more easily and consistently
             
             Express API
                   |
