@@ -34,3 +34,36 @@ Worker
    ↓
 Process Job
 ![diagram flow](image.png)
+
+
+//Now flow
+            
+            
+            Express API
+                  |
+                  v
+             PostgreSQL
+                  |
+                  v
+              BullMQ
+                  |
+                  v
+                Redis
+                  |
+                  v
+               Worker
+                  |
+          ┌───────┴────────┐
+          |                |
+       Success           Failure
+          |                |
+          v                v
+    PostgreSQL        Retry / Backoff
+                           |
+                      ┌────┴────┐
+                      |         |
+                   Retry      Final
+                      |       Failure
+                      |         |
+                      └────┐    v
+                           └> PostgreSQL
